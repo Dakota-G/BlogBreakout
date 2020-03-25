@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>Blog</title>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <a href = "/blogs">BLOGS</a>
+                <a href = "/">USERS</a> 
+                <h1>{{ pineapple.Title }}</h1>
+                Created on: <h3>{{ pineapple.created_at }}</h3>
+                Created by: <h3>{{ pineapple.Creator.Username }}</h3>
+                <p><a href = "/blogs/edit/{{pineapple.id}}">EDIT</a></p>
+                <p><a href="/delete_blog/{{pineapple.id}}">DELETE</a></p>
+
+                {{ pineapple.Text }}
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>

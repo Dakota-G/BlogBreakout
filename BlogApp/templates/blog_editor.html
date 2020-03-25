@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>Blog Editor</title>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <a href = "/">USERS</a> 
+            <a href = "/blogs">BLOGS</a> 
+            <div class="col">
+                <h3>Edit {{blog_to_edit.Creator.Username}}'s Blog:</h3>
+                <form action="/edit_blog/{{blog_to_edit.id}}" method="POST">
+                    {% csrf_token %}
+                    <label for="title">Change the title:</label>
+                    <input type="text" name="title" class="form-control" value="{{blog_to_edit.Title}}">
+
+                    <label for="content">Edit the Content:</label>
+                    <input type="textarea" name="content" class="form-control" value="{{blog_to_edit.Text}}">
+
+                    <input type="submit" value="Edit">
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

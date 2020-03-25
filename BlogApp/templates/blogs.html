@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>Blogs</title>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <a href = "/">USERS</a> 
+            <div class="col">
+                <h3>Create a Blog:</h3>
+                <form action="/create_blog" method="POST">
+                    {% csrf_token %}
+                    <label for="title">Title the Blog:</label>
+                    <input type="text" name="title" class="form-control">
+
+                    <label for="content">Blog Content:</label>
+                    <input type="textarea" name="content" class="form-control">
+
+                    <label for"creator">Whose Blog?:</label>
+                    <select name="creator">
+                            {% for user in all_users %}
+                        <option value="{{ user.id }}">{{ user.Username }}</option>
+                        {% endfor %}
+                    </select>
+                    <input type="submit" value="Create">
+                </form>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <ul>
+                {% for blog in all_blogs %}
+                    <li><a href="/blogs/{{ blog.id }}">{{ blog.Title }}</a> created by: {{ blog.Creator.Username }} 
+                        | <a href ="/blogs/edit/{{blog.id}}">EDIT</a> | <a href="/delete_blog/{{blog.id}}">DELETE</a></li>
+                {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
