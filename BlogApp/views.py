@@ -11,8 +11,14 @@ def index(request):
     return render(request, "index.html", context)
 
 def all_blogs(request):
+    all_blogs = Blog.objects.all()
+    if len(all_blogs) < 1:
+        some_blogs = False
+    else:
+        some_blogs = True
     context = {
-        "all_blogs": Blog.objects.all(),
+        "all_blogs": all_blogs,
+        "some_blogs": some_blogs,
         "all_users": User.objects.all()
     }
     return render(request, "blogs.html", context)
