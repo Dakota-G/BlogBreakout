@@ -23,20 +23,25 @@
             </div>
         </div>
         <div class="row">
-            <div class="col">
-                <ul>
+            <div class="col-8">
+                <table class = "table table.dark">
+                    <tr><th>Title</th><th>Creator</th><th>Actions</th></tr>
                 {% if some_blogs == True %}
                 {% for blog in all_blogs %}
-                    <li><a href="/blogs/{{ blog.id }}">{{ blog.Title }}</a> 
-                        created by: {{ blog.Creator.Username }} 
-                        | <a href ="/blogs/edit/{{blog.id}}">EDIT</a> 
-                        | <a href="/delete_blog/{{blog.id}}">DELETE</a></li>
+                    
+                    <tr><td><a href="/blogs/{{ blog.id }}">{{ blog.Title }}</a></td> 
+                        <td>{{ blog.Creator.Username }}</td>
+                        <td> <a href ="/blogs/edit/{{blog.id}}">EDIT</a> 
+                        | <a href="/delete_blog/{{blog.id}}">DELETE</a></td></tr>
                 {% endfor %}
                 {% else %}
                     <li>No Blogs in the Database!! </li>
                 {% endif %}
-                </ul>
+                </table>
             </div>
+            {% block sidebar %}
+            {% endblock %}
         </div>
+
 
 {% endblock %}

@@ -21,7 +21,7 @@ def all_blogs(request):
         "some_blogs": some_blogs,
         "all_users": User.objects.all()
     }
-    return render(request, "blogs.html", context)
+    return render(request, "all_users.html", context)
 
 def one_blog(request, blog_id):
     context = {

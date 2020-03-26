@@ -1,0 +1,16 @@
+
+Model Users one to many Model Blogs 
+Users: Username, Password
+Blogs: Title, Text, ForeignKey(User)
+
+Webpages to be rendered
+Log In  - url: '' -> views.index
+All Blogs   'blogs' -> views.all_blogs
+Single User Blogs 'blogs/<userid>' -> views.one_blog
+Edit blog page 'blogs/edit/<blogid> -> views.blog_editor
+
+Data Redirects:
+Register the User url: 'create_user' -> views.create_user
+create a Blog: 'create_user' -> views.create_blog
+edit a Blog: 'edit_blog' -> views.edit_blog
+delete a Blog: 'delete_blog' -> views.delete_blog
